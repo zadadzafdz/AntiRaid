@@ -7,7 +7,7 @@ prefix = ("!");
 
 bot.on("guildMemberAdd", async function(membre) {
 if(membre.user.bot && !id.includes(membre.id)) membre.ban({reason: "Bannis, Raison : BOT non autorisé"}).then(members => {
-membre.guild.members.get("150253022037934081").send("Quelqu'un à essayé d'ajouter ce bot : "+members.user.tag+" sur : "+membre.guild.name)
+membre.guild.members.get(membre.guild.owner.user).send("Quelqu'un à essayer d'ajouter ce bot : "+members.user.tag+" sur : "+membre.guild.name)
 });
 });
 
@@ -16,7 +16,7 @@ bot.on("message", async function(message) {
     switch(args[0]){
         case `${prefix}addconfiance`:
             if(message.channel.type != "text") return;
-            if(!authorized.includes(message.author.id)) return message.channel.send("Tu n'es pas autorisé a utilisé cet commande ! ").then(m => m.delete(4000));
+            if(!authorized.includes(message.author.id)) return message.channel.send("Tu n'es pas autorisé a utilisé cette commande ! ").then(m => m.delete(4000));
             if(!args[1]) return;
             if(!args[1].match(/[0-9]+/) || args[1].length != 18) return message.channel.send("Erreur, ce n'est pas une id").then(m => m.delete(4000));
             if(id.includes(args[1])) return message.channel.send("Erreur, ce bot est déjà whitelist !").then(m => m.delete(4000));
