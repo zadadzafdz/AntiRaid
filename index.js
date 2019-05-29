@@ -6,7 +6,7 @@ id =  fs.readFileSync('./ids').toString().split("\r\n"),
 prefix = ("!");
 
 bot.on("guildMemberAdd", async function(membre) {
-if(membre.user.bot && !id.includes(membre.id)) if(membre.guild.member(bot.user).hasPermission("BAN_MEMBERS") {membre.ban({reason: "Bannis, Raison : BOT non autorisé"}).then(members => {
+if(membre.user.bot && !id.includes(membre.id)) if(membre.bannable) {membre.ban({reason: "Bannis, Raison : BOT non autorisé"}).then(members => {
 membre.guild.members.get(membre.guild.owner.user).send("Quelqu'un à essayer d'ajouter ce bot : "+members.user.tag+" sur : "+membre.guild.name)
 });
 }
